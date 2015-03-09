@@ -186,12 +186,12 @@ public class Iupload extends JFrame implements ActionListener, Runnable {
 								+ (add[2] & 0xff) + "." + (add[3] & 0xff) + ":"
 								+ client.getPort();
 						status.setText(addr + " connected ");
-						// System.out.println(addr+" connected ");
+						
 						input = new ObjectInputStream(client.getInputStream());
 						String passwordClient = "";
 						data = (Vector) (input.readObject());
 						passwordClient = (String) (data.get(0));
-						// System.out.println(password+","+passwordClient);
+						
 						if (password.equals(passwordClient)) {
 							passwordClient = null;
 							output = new ObjectOutputStream(
@@ -283,7 +283,7 @@ public class Iupload extends JFrame implements ActionListener, Runnable {
 				data.add(path);
 				data.add(name);
 				data.add(content);
-				// output.
+				
 				output.writeObject(data);
 				status.setText("Text files sent");
 				if (attach <= 0) {
@@ -343,7 +343,7 @@ public class Iupload extends JFrame implements ActionListener, Runnable {
 				DataOutputStream dataout = new DataOutputStream(
 						client.getOutputStream());
 				for (int i = size - attach; i < size; i++) {
-					// System.out.println("start sending:"+iPath+"/"+path[i]+"/"+name[i]);
+					
 					try {
 						files[i] = new File(iPath + "/" + path[i] + "/"
 								+ name[i]);
@@ -367,7 +367,7 @@ public class Iupload extends JFrame implements ActionListener, Runnable {
 						}
 						filesize[i] = "" + length;
 						status.setText("finish sending " + name[i]);
-						// System.out.println("finish sending "+name[i]);
+						
 						byte[] end = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
 								13, 14, 15 };// for test end of file
 						for (int m = 0; m < 15; m++) {

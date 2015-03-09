@@ -137,7 +137,7 @@ public class Clientsite extends JFrame implements ActionListener, Runnable {
 				if (!client.getStatus()) {
 					continue begin;
 				}
-				// System.out.print("connected");//
+				
 				client.sendData(password);
 				Vector reply = client.getData();
 				if (reply == null) {
@@ -150,7 +150,7 @@ public class Clientsite extends JFrame implements ActionListener, Runnable {
 				long seconds = System.currentTimeMillis();
 				Timestamp starttime = new Timestamp(seconds);
 				status.setText("Approved");
-				// System.out.print("approved");//
+				
 				client.sendData(driveValue);
 				reply = client.getData();
 				String[] dir = (String[]) reply.get(0);
@@ -163,7 +163,7 @@ public class Clientsite extends JFrame implements ActionListener, Runnable {
 					File[] files = new File[size];
 					for (int i = 0; i < size - attach; i++) {
 						files[i] = new File(driveValue + "/" + dir[i]);
-						// System.out.println("location:"+driveValue+"/"+dir[i]);
+						
 						if (!(files[i].exists()) || content[i] == null
 								|| content[i].length() == 0) {
 							result[i] = "FAILURE";
@@ -177,7 +177,7 @@ public class Clientsite extends JFrame implements ActionListener, Runnable {
 						result[i] = "SUCCESS";
 					}
 					status.setText("Text files published");
-					// System.out.println("Text files published");
+					
 					if (attach <= 0) {
 						seconds = System.currentTimeMillis();
 						Timestamp endtime = new Timestamp(seconds);
