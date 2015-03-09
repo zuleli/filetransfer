@@ -1,3 +1,7 @@
+/* Author: Zule Li
+ * Email:zule.li@hotmail.com
+ * */
+
 package fileTransfer;
 
 import java.io.*;
@@ -38,8 +42,8 @@ public class SocketClient
       try{
       if(server!=null)
       {
-         server.close();
-         server=null;
+				server.close();
+				server =null;
       }
          }catch(IOException e)
          {System.out.println(e);}
@@ -83,11 +87,11 @@ public class SocketClient
 	{
 		try
 		{
-      //if(input==null)
+   
     	input=new ObjectInputStream(server.getInputStream());
  			System.out.println("Waiting for data.....");
 			Vector message=(Vector)input.readObject();
-//      	System.out.println("data got....."+message.size());
+
 			return message;
 		}catch(IOException e)
 		{
@@ -103,8 +107,7 @@ public class SocketClient
 	public boolean bytetransfer(File file,JProgressBar bar,long L,JTextField field,JLabel label,JTextField complete)
 	{
     boolean status=true;
-//    if(!file.exists())
-//    file.createNewFile();
+
    bar.setMaximum((int)(L/1000));
    bar.setMinimum(0);
 		try
@@ -174,19 +177,7 @@ public class SocketClient
           writer.write(bs);
           continue;
         }
- /*       else
-        {
-           for(int i=0;i<(int)(L-length);i++)
-           {
-                c=datain.readByte();
-                writer.writeByte(c);
-                length++;
-           }
-           bar.setValue((int)(length/1000));
-           break;
-          
-        }
-//*/
+
         c=datain.readByte();
         bar.setValue((int)(length/1000));
 				if((!(c==end[0]))&& (!suspect))
@@ -220,7 +211,7 @@ public class SocketClient
 					suspect=true;//when data may come to end
 				
 				}
-        //*/
+   
 			}
 			writer.close();
       if(length==0)
